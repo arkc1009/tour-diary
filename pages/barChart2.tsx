@@ -13,7 +13,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 const BarChart2: NextPage = () => {
   const svgRef = useRef<SVGSVGElement>(null);
 
-  const [data, setData] = useState([
+  const [data] = useState([
     { value: 10, label: 'abv' },
     { value: 35, label: 'b' },
     { value: 50, label: 'c' },

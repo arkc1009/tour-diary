@@ -12,7 +12,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const BarChart: NextPage = () => {
   const svgRef = useRef<SVGSVGElement>(null);
-  const [data, setData] = useState([5, 10, 20, 30, 50]);
+  const [data] = useState([5, 10, 20, 30, 50]);
 
   const width = 1024;
   const height = 768;
