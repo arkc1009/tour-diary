@@ -5,22 +5,22 @@ import {
   max,
   scaleBand,
   scaleLinear,
-  select,
-} from "d3";
-import { NextPage } from "next";
-import { useCallback, useEffect, useRef, useState } from "react";
+  select
+} from 'd3';
+import { NextPage } from 'next';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 const BarChart2: NextPage = () => {
   const svgRef = useRef<SVGSVGElement>(null);
 
   const [data, setData] = useState([
-    { value: 10, label: "abv" },
-    { value: 35, label: "b" },
-    { value: 50, label: "c" },
-    { value: 48, label: "d" },
-    { value: 20, label: "e" },
-    { value: 42, label: "f" },
-    { value: 35, label: "g" },
+    { value: 10, label: 'abv' },
+    { value: 35, label: 'b' },
+    { value: 50, label: 'c' },
+    { value: 48, label: 'd' },
+    { value: 20, label: 'e' },
+    { value: 42, label: 'f' },
+    { value: 35, label: 'g' }
   ]);
 
   const width = 1024;
@@ -46,21 +46,21 @@ const BarChart2: NextPage = () => {
       .domain([0, Number(max(data, (d) => d.value))])
       .range([0, 1]);
 
-    svg.select(".x-axis").call(xAxis as any);
-    svg.select(".y-axis").call(yAxis as any);
+    svg.select('.x-axis').call(xAxis as any);
+    svg.select('.y-axis').call(yAxis as any);
 
     svg
-      .selectAll(".bar")
+      .selectAll('.bar')
       .data(data)
-      .join("rect")
-      .attr("class", ".bar")
-      .attr("x", xScale(0))
-      .attr("y", (d) => yScale(d.label) || 0)
-      .attr("height", yScale.bandwidth())
+      .join('rect')
+      .attr('class', '.bar')
+      .attr('x', xScale(0))
+      .attr('y', (d) => yScale(d.label) || 0)
+      .attr('height', yScale.bandwidth())
       .transition()
       .duration(1000)
-      .attr("width", (d) => xScale(d.value))
-      .attr("fill", (d) => interpolatePlasma(colors(d.value)));
+      .attr('width', (d) => xScale(d.value))
+      .attr('fill', (d) => interpolatePlasma(colors(d.value)));
   }, [data]);
 
   useEffect(() => {
@@ -68,15 +68,15 @@ const BarChart2: NextPage = () => {
   }, [renderChart]);
 
   return (
-    <div className="p-8">
+    <div className='p-8'>
       <svg
         ref={svgRef}
         width={width}
         height={height}
-        style={{ overflow: "visible" }}
+        style={{ overflow: 'visible' }}
       >
-        <g className="x-axis" style={{ strokeWidth: 0 }} />
-        <g className="y-axis" style={{ strokeWidth: 0 }} />
+        <g className='x-axis' style={{ strokeWidth: 0 }} />
+        <g className='y-axis' style={{ strokeWidth: 0 }} />
       </svg>
     </div>
   );
