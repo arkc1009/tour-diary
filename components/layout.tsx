@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useMemo } from "react";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useMemo } from 'react';
 
 interface MenuItemType {
   href: string;
@@ -12,25 +12,26 @@ const Layout: React.FC = ({ children }) => {
 
   const menuItems: MenuItemType[] = useMemo(
     () => [
-      { href: "/", title: "main" },
-      { href: "/about", title: "about" },
-      { href: "/barChart", title: "BarChart" },
-      { href: "/barChart2", title: "BarChart2" },
+      { href: '/', title: 'main' },
+      { href: '/about', title: 'about' },
+      { href: '/barChart', title: 'BarChart' },
+      { href: '/barChart2', title: 'BarChart2' },
+      { href: '/line', title: 'LineChart' }
     ],
     []
   );
 
   return (
-    <div className="flex min-h-screen">
-      <div className="min-h-full w-64 bg-red-300 py-8 px-4">
+    <div className='flex min-h-screen'>
+      <div className='min-h-full w-64 bg-red-300 py-8 px-4'>
         <nav>
-          <ul className="flex flex-col gap-4">
+          <ul className='flex flex-col gap-4'>
             {menuItems.map(({ href, title }) => (
               <li key={title}>
                 <Link href={href}>
                   <a
                     className={`block h-full w-full cursor-pointer rounded bg-red-500 p-4 hover:bg-white ${
-                      router.asPath === href && "bg-white"
+                      router.asPath === href && 'bg-white'
                     }`}
                   >
                     {title}
@@ -41,7 +42,7 @@ const Layout: React.FC = ({ children }) => {
           </ul>
         </nav>
       </div>
-      <div className="h-full">{children}</div>
+      <div className='h-full'>{children}</div>
     </div>
   );
 };
