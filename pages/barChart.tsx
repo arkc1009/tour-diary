@@ -10,7 +10,7 @@ import {
 import { NextPage } from "next";
 import { useEffect, useRef, useState } from "react";
 
-const Example1: NextPage = () => {
+const BarChart: NextPage = () => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [data, setData] = useState([5, 10, 20, 30, 50]);
 
@@ -72,4 +72,4 @@ const Example1: NextPage = () => {
   );
 };
 
-export default Example1;
+export default BarChart;
