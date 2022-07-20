@@ -16,7 +16,8 @@ const Layout: React.FC = ({ children }) => {
       { href: '/about', title: 'about' },
       { href: '/barChart', title: 'BarChart' },
       { href: '/barChart2', title: 'BarChart2' },
-      { href: '/line', title: 'LineChart' }
+      { href: '/line', title: 'LineChart' },
+      { href: '/pie', title: 'PieChart' }
     ],
     []
   );
