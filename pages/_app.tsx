@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'development') {
   }
 }
 
-function MyApp ({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <Component {...pageProps} />

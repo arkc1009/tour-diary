@@ -1,6 +1,6 @@
-import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
+import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest, event: NextFetchEvent) {
-  console.log("middleware!");
+  console.log('middleware!');
   return NextResponse.next();
 }

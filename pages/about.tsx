@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from 'react';
+import { useRouter } from 'next/router';
 
 function About() {
   const router = useRouter();
@@ -8,7 +8,7 @@ function About() {
     <div>
       <ul>
         <li>
-          <a onClick={() => router.push("/posts/abc")}>go to posts/[id].tsx</a>
+          <a onClick={() => router.push('/posts/abc')}>go to posts/[id].tsx</a>
         </li>
       </ul>
     </div>

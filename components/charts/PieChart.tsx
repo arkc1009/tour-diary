@@ -49,13 +49,13 @@ const PieChart: React.FC<PieChartProps> = ({
       .attr('d', myArc as any)
       .transition()
       .duration(1000)
-      .attrTween('d', (d) => {
+      .attrTween('d', ((d: any) => {
         const i = interpolate(d.endAngle, d.startAngle);
-        return function (t) {
+        return function (t: any) {
           d.startAngle = i(t);
           return myArc(d as any);
         };
-      })
+      }) as any)
       .attr('stroke', 'black')
       .attr('stroke-width', '0.1rem');
 
