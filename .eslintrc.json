@@ -19,6 +19,8 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "semi": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "space-before-function-paren": "off",
+    "react/prop-types": "off"
   }
 }
