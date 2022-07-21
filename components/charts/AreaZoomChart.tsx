@@ -77,7 +77,8 @@ const AreaZoomChart: React.FC<
           xScale.invert(brushExtent.at(0) as number),
           xScale.invert(brushExtent[1] as number)
         ]);
-        svg.select('.brush').call(_brush.move as any);
+        // brush move가 끝난 후에 초기화 (null 위치로 이동 시켜서 마치 사라진것 처럼)
+        svg.select('.brush').call(_brush.move as any, null);
       }
 
       xAxis.transition().duration(1000).call(axisBottom(xScale));
