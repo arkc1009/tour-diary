@@ -1,4 +1,13 @@
-import { arc, interpolatePlasma, max, min, pie, scaleLinear, select } from 'd3';
+import {
+  arc,
+  interpolate,
+  interpolatePlasma,
+  max,
+  min,
+  pie,
+  scaleLinear,
+  select
+} from 'd3';
 import React, { useEffect, useRef } from 'react';
 import useParseSize from '../../libs/useParseSize';
 import ChartBaseProps from './chartProps';
@@ -21,24 +30,32 @@ const PieChart: React.FC<PieChartProps> = ({
   useEffect(() => {
     const svg = select(svgRef.current);
     const myPie = pie<number>().value((d) => d);
+
     const myArc = arc().innerRadius(0).outerRadius(radius);
 
     const colors = scaleLinear()
       .domain([Number(min(data)), Number(max(data))])
       .range([1, 0]);
 
-    svg
+    const slice = svg
       .attr('transform', `translate(${_width / 2}, ${_height / 2})`)
       .selectAll('path')
       .data(myPie(data))
-      .join('path')
-      .attr('fill', 'tomato')
-      .attr('opacity', 0)
+      .join('path');
+
+    slice.attr('fill', (d) => interpolatePlasma(colors(d.data)));
+
+    slice
       .attr('d', myArc as any)
       .transition()
-      .duration(300)
-      .attr('opacity', 1)
-      .attr('fill', (d) => interpolatePlasma(colors(d.data)))
+      .duration(1000)
+      .attrTween('d', (d) => {
+        const i = interpolate(d.endAngle, d.startAngle);
+        return function (t) {
+          d.startAngle = i(t);
+          return myArc(d as any);
+        };
+      })
       .attr('stroke', 'black')
       .attr('stroke-width', '0.1rem');
 

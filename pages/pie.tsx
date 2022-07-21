@@ -5,7 +5,7 @@ import PieChart from '../components/charts/PieChart';
 const Pie: NextPage = () => {
   const chartData = [
     [9, 20, 30, 8, 12],
-    [10, 10, 10, 30, 80]
+    [0, 100]
   ];
   const [dataIndex, setdataIndex] = useState<0 | 1>(0);
 
