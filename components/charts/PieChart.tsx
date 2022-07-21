@@ -3,10 +3,15 @@ import React, { useEffect, useRef } from 'react';
 import useParseSize from '../../libs/useParseSize';
 import ChartBaseProps from './chartProps';
 
-const PieChart: React.FC<ChartBaseProps<number>> = ({
+interface PieChartProps extends ChartBaseProps<number> {
+  dount?: boolean;
+}
+
+const PieChart: React.FC<PieChartProps> = ({
   width,
   height,
-  data
+  data,
+  dount = false
 }) => {
   const [_width, _height] = useParseSize({ width, height });
 
@@ -27,11 +32,28 @@ const PieChart: React.FC<ChartBaseProps<number>> = ({
       .selectAll('path')
       .data(myPie(data))
       .join('path')
+      .attr('fill', 'tomato')
+      .attr('opacity', 0)
       .attr('d', myArc as any)
+      .transition()
+      .duration(300)
+      .attr('opacity', 1)
       .attr('fill', (d) => interpolatePlasma(colors(d.data)))
       .attr('stroke', 'black')
       .attr('stroke-width', '0.1rem');
-  }, [data, radius, _width, _height]);
+
+    svg
+      .selectAll('text')
+      .data(myPie(data))
+      .join('text')
+      .attr('transform', (d) => `translate(${myArc.centroid(d as any)})`)
+      .style('opacity', 0)
+      .attr('class', 'font-bold fill-white')
+      .transition()
+      .duration(800)
+      .style('opacity', 1)
+      .text((d) => `${d.data}`);
+  }, [data, radius, _width, _height, dount]);
 
   return (
     <svg
