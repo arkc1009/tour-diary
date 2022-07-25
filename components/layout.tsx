@@ -20,7 +20,8 @@ const Layout: React.FC = ({ children }) => {
       { href: '/lineZoom', title: 'LineZoomChart' },
       { href: '/pie', title: 'PieChart' },
       { href: '/area', title: 'AreaChart' },
-      { href: '/areaZoom', title: 'AreaZoomChart' }
+      { href: '/areaZoom', title: 'AreaZoomChart' },
+      { href: '/scatter', title: 'Scatter' }
     ],
     []
   );
